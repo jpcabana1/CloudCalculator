@@ -38,5 +38,7 @@ namespace calc.Services
             return Result;
         }
 
+        public bool ValidateOperation(string op) => (op == "+" || op == "-" || op == "*" || op == "/");
+           
     }
 }

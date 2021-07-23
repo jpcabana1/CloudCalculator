@@ -38,12 +38,17 @@ namespace calc.Controllers
         [HttpPost]
         public async Task<ActionResult<Operation>> PostOperation(OperationDTO opDto)
         {
-            Operation operation = service.MakeOperation(opDto);
+            if (service.ValidateOperation(opDto.operation))
+            {
+                Operation operation = service.MakeOperation(opDto);
 
-            _context.Operations.Add(operation);
-            await _context.SaveChangesAsync();
+                _context.Operations.Add(operation);
+                await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(PostOperation), new { id = operation.Id }, operation);
+                return CreatedAtAction(nameof(PostOperation), new { id = operation.Id }, operation);
+            }else{
+                return BadRequest();
+            }
         }
 
         #endregion
