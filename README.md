@@ -13,7 +13,7 @@ React + .NET Core + SQL Server WebApp
 - dotnet ef migrations add DatabaseOperations
 - dotnet ef database update
 
-## OBS: Lembrar de configurar o Startup.cs
+## Startup.cs
 
 - #### services.AddDbContext<OperationContext>(opt =>opt.UseSqlServer(Configuration.GetConnectionString("OperationAPIContext")));
 - dotnet aspnet-codegenerator controller -name OperationController -async -api -m Operation -dc OperationContext -outDir Controllers
