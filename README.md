@@ -14,6 +14,7 @@ React + .NET Core + SQL Server WebApp
 ## OBS: Lembrar de configurar o Startup.cs
 
 - dotnet aspnet-codegenerator controller -name OperationController -async -api -m Operation -dc OperationContext -outDir Controllers
+  #### services.AddDbContext<OperationContext>(opt => opt.UseSqlServer("Banco"));
 
 ## Docker SQL Server
 
