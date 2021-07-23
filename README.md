@@ -10,10 +10,12 @@ React + .NET Core + SQL Server WebApp
 - dotnet add package Microsoft.EntityFrameworkCore.Tools
 - dotnet tool install --global dotnet-aspnet-codegenerator
 - dotnet tool update -g Dotnet-aspnet-codegenerator
+- dotnet ef migrations add DatabaseOperations
+- dotnet ef database update
 
 ## OBS: Lembrar de configurar o Startup.cs
 
-- #### services.AddDbContext<OperationContext>(opt => opt.UseSqlServer("Banco"));
+- #### services.AddDbContext<OperationContext>(opt =>opt.UseSqlServer(Configuration.GetConnectionString("OperationAPIContext")));
 - dotnet aspnet-codegenerator controller -name OperationController -async -api -m Operation -dc OperationContext -outDir Controllers
 
 ## Docker SQL Server
