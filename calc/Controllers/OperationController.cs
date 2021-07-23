@@ -53,7 +53,5 @@ namespace calc.Controllers
 
         #endregion
 
-
-
     }
 }

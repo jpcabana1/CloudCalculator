@@ -29,6 +29,16 @@ namespace calc
         {
             services.AddDbContext<OperationContext>(opt =>
                            opt.UseSqlServer(Configuration.GetConnectionString("OperationAPIContext")));
+
+            services.AddCors(options =>
+           {
+               options.AddDefaultPolicy(builder =>
+               {
+                   builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+               });
+           });
+
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -47,7 +57,7 @@ namespace calc
             }
 
             app.UseRouting();
-
+            app.UseCors();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
