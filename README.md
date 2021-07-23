@@ -20,4 +20,4 @@ React + .NET Core + SQL Server WebApp
 
 ## Docker SQL Server
 
-- docker run -e "ACCEPT*EULA=Y" -e "SA_PASSWORD=*{password}\_" -p 1401:1433 --name sqlServer -d mcr.microsoft.com/mssql/server:2019-latest
+- docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=_{PASSWORD}_" -p 1401:1433 --name sqlServer -d mcr.microsoft.com/mssql/server:2019-latest
