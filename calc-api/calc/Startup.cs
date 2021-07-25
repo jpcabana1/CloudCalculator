@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using calc.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace calc
 {
@@ -25,7 +27,7 @@ namespace calc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddDbContext<OperationContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("OperationAPIContext")));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
