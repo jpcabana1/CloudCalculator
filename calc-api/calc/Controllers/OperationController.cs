@@ -46,7 +46,9 @@ namespace calc.Controllers
                 await _context.SaveChangesAsync();
 
                 return CreatedAtAction(nameof(PostOperation), new { id = operation.Id }, operation);
-            }else{
+            }
+            else
+            {
                 return BadRequest();
             }
         }

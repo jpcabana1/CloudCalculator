@@ -10,7 +10,7 @@ using calc.Models;
 namespace calc.Migrations
 {
     [DbContext(typeof(OperationContext))]
-    [Migration("20210723012420_DatabaseOperations")]
+    [Migration("20210725185739_DatabaseOperations")]
     partial class DatabaseOperations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
