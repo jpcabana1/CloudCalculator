@@ -5,40 +5,39 @@ namespace calc.Services
 {
     public class OperationService
     {
-        public Operation MakeOperation(OperationDTO opDTO)
+        public Operation MakeOperation(double propA, string propOperation, double propB)
         {
+            double result = Calculate(propA, propOperation, propB);
+
             Operation operation = new Operation();
-            operation.OperationData = Operation.ConvertData(opDTO, Calculate(opDTO));
+            operation.OperationData = $"A : {propA} {propOperation} B : {propB} = {result}";
             operation.DateOperation = DateTime.Now;
 
             return operation;
         }
 
-        private double Calculate(OperationDTO opDTO)
+        private double Calculate(double propA, string propOperation, double propB)
         {
             double Result;
-            switch (opDTO.operation)
+            switch (propOperation)
             {
                 case "+":
-                    Result = opDTO.A + opDTO.B;
+                    Result = propA + propB;
                     break;
                 case "-":
-                    Result = opDTO.A - opDTO.B;
+                    Result = propA - propB;
                     break;
                 case "*":
-                    Result = opDTO.A * opDTO.B;
+                    Result = propA * propB;
                     break;
                 case "/":
-                    Result = opDTO.A / opDTO.B;
+                    Result = propA / propB;
                     break;
                 default:
-                    Result = opDTO.A + opDTO.B;
+                    Result = propA + propB;
                     break;
             }
             return Result;
         }
-
-        public bool ValidateOperation(string op) => (op == "+" || op == "-" || op == "*" || op == "/");
-           
     }
 }
