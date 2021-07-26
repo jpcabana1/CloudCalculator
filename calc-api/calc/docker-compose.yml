@@ -1,10 +1,7 @@
 version: "3.9"
 services:
   app:
-    image: "calc/jpcabana1"
-    build:
-      context: .
-    container_name: CalculadoraAPI
+    build: .
     ports:
       - "8080:80"
     depends_on:
