@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using calc.Models;
 using calc.Services;
+using System;
 
 namespace calc.Controllers
 {
@@ -28,7 +29,7 @@ namespace calc.Controllers
         #region "Methods"
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Operation>>> GetTodoItems()
+        public async Task<ActionResult<IEnumerable<Operation>>> GetOperations()
         {
             return await _context.Operations.ToListAsync();
         }
@@ -36,21 +37,23 @@ namespace calc.Controllers
         // POST: api/Operation
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Operation>> PostOperation(OperationDTO opDto)
+        public async Task<ActionResult<Operation>> PostOperation([FromHeader] double propA, [FromHeader] string propOperation, [FromHeader] double propB)
         {
-            if (service.ValidateOperation(opDto.operation))
+            try
             {
-                Operation operation = service.MakeOperation(opDto);
+                Operation operation = service.MakeOperation(propA, propOperation, propB);
 
                 _context.Operations.Add(operation);
                 await _context.SaveChangesAsync();
 
                 return CreatedAtAction(nameof(PostOperation), new { id = operation.Id }, operation);
             }
-            else
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return BadRequest();
             }
+
         }
 
         #endregion
