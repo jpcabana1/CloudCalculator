@@ -33,5 +33,4 @@ React + .NET Core + SQL Server WebApp
 docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=C@lcP@55" -p 1401:1433 --name sqlServer -d mcr.microsoft.com/mssql/server:2019-latest
 docker build -t calc/jpcabana1 -f Dockerfile .
 
-OBS: Foi necessário atualizar o banco(dotnet ef database update) em "localhost, 1402".
-Em seguida mudei para para "db" a connectionString.
+OBS: adicionar em launchSettings.json "ASPNETCORE_URLS": "http://+:80"
