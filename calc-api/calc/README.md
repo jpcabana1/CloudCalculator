@@ -1,4 +1,4 @@
-# CloudCalculator
+# CloudCalculator-Server
 
 React + .NET Core + SQL Server WebApp
 
