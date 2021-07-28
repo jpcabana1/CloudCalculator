@@ -27,7 +27,28 @@ namespace calc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<OperationContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("OperationAPIContext")));
+
+            #region "development"
+            var connection_dev = @"Server=localhost, 1403;Database=Operations;User Id=sa;Password=C@lcP@55D3v;";
+            Console.WriteLine(connection_dev);
+            services.AddDbContext<OperationContext>(opt => opt.UseSqlServer(connection_dev));
+            #endregion
+
+            #region "production"
+            // var connection = @"Server=db;Database=Operations;User Id=sa;Password=C@lcP@55;";
+            // Console.WriteLine(connection);
+            // services.AddDbContext<OperationContext>(opt => opt.UseSqlServer(connection));
+            #endregion
+
+            //services.AddDbContext<OperationContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("OperationAPIContext")));
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                });
+            });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -46,7 +67,7 @@ namespace calc
             }
 
             app.UseRouting();
-
+            app.UseCors();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
