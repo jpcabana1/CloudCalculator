@@ -13,7 +13,6 @@ namespace calc.Services
             _context = context;
         }
 
-
         public IEnumerable<Operation> getOperations(){
             return _context.Operations;
         }

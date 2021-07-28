@@ -6,6 +6,7 @@
 
 - dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 - dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+- dotnet add package Microsoft.EntityFrameworkCore.InMemory
 - dotnet add package Microsoft.EntityFrameworkCore.Design
 - dotnet add package Microsoft.EntityFrameworkCore.Tools
 - dotnet tool install --global dotnet-aspnet-codegenerator
@@ -14,6 +15,7 @@
 - dotnet ef database update
 - dotnet aspnet-codegenerator controller -name OperationController -async -api -m Operation -dc OperationContext -outDir Controllers
 - dotnet add package FakeItEasy --version 7.1.0
+- dotnet tool install -g dotnet-reportgenerator-globaltool
 
 ## Startup.cs
 
