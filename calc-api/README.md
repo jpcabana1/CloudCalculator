@@ -24,3 +24,5 @@
 ## Docker SQL Server
 
 - docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=password" -p 1401:1433 --name sqlServer -d mcr.microsoft.com/mssql/server:2019-latest
+
+OBS: adicionar em launchSettings.json "ASPNETCORE_URLS": "http://+:80"
