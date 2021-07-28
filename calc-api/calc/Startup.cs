@@ -29,15 +29,15 @@ namespace calc
         {
 
             #region "development"
-            // var connection_dev = @"Server=localhost, 1403;Database=Operations;User Id=sa;Password=C@lcP@55D3v;";
-            // Console.WriteLine(connection_dev);
-            // services.AddDbContext<OperationContext>(opt => opt.UseSqlServer(connection_dev));
+            var connection_dev = @"Server=localhost, 1403;Database=Operations;User Id=sa;Password=C@lcP@55D3v;";
+            Console.WriteLine(connection_dev);
+            services.AddDbContext<OperationContext>(opt => opt.UseSqlServer(connection_dev));
             #endregion
 
             #region "production"
-            var connection = @"Server=db;Database=Operations;User Id=sa;Password=C@lcP@55;";
-            Console.WriteLine(connection);
-            services.AddDbContext<OperationContext>(opt => opt.UseSqlServer(connection));
+            // var connection = @"Server=db;Database=Operations;User Id=sa;Password=C@lcP@55;";
+            // Console.WriteLine(connection);
+            // services.AddDbContext<OperationContext>(opt => opt.UseSqlServer(connection));
             #endregion
 
             //services.AddDbContext<OperationContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("OperationAPIContext")));
