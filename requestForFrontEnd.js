@@ -3,9 +3,7 @@ fetch("http://localhost:8080/api/Operation", {
   headers: {
     Accept: "*/*",
     "Content-Type": "application/json",
-    propA: "6",
-    propOperation: "+",
-    propB: "4",
+    propOperation: "(500 + 50) / 2",
   },
 })
   .then((res) => res.json())
@@ -18,3 +16,14 @@ fetch("http://localhost:8080/api/Operation")
   .then((result) => {
     console.log(result);
   });
+
+const expression = "(500 + 50) / 2";
+
+const obj = {
+  operationData: expression + " = " + eval(expression),
+  dateOperation: new Date(),
+};
+
+console.log(
+  "\nexpression: " + obj.operationData + "\nDate: " + obj.dateOperation + "\n"
+);

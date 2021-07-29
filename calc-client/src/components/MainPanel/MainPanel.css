@@ -1,0 +1,12 @@
+.MainPanel {
+  width: 30rem;
+  display: grid;
+  place-items: center;
+  border-style: dashed;
+}
+
+.btnMainPanel {
+  width: 3rem;
+  font-size: 2rem;
+  margin: 1rem;
+}
