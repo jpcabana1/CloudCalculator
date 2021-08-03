@@ -2,6 +2,8 @@ using Xunit;
 using calc.Models;
 using calc.Services;
 using FakeItEasy;
+using Microsoft.EntityFrameworkCore;
+
 namespace calc.Tests
 {
     public class OperationServiceTest
@@ -14,8 +16,11 @@ namespace calc.Tests
         )
         {
             //Arrange
-            OperationContext context = A.Fake<OperationContext>();
-            OperationService service = new(context);
+             var options = new DbContextOptionsBuilder<OperationContext>()
+            .UseInMemoryDatabase(databaseName: "Operations")
+            .Options;
+
+            OperationService service = new(new OperationContext(options));
         
             //Act
             var op = service.CalculateExpression(expression);
