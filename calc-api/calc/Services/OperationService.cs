@@ -1,43 +1,49 @@
 using System;
+using System.Collections.Generic;
+using System.Data;
 using calc.Models;
 
 namespace calc.Services
 {
     public class OperationService
     {
-        public Operation MakeOperation(double propA, string propOperation, double propB)
+        private readonly OperationContext _context;
+
+        public OperationService(OperationContext context){
+            _context = context;
+        }
+
+        public IEnumerable<Operation> getOperations(){
+            return _context.Operations;
+        }
+        
+        public OperationDTO CalculateExpression(string expression)
         {
-            double result = Calculate(propA, propOperation, propB);
+            var result = Calculate(expression);
 
             Operation operation = new Operation();
-            operation.OperationData = $"A : {propA} {propOperation} B : {propB} = {result}";
+            operation.OperationData = $"{expression} = {result}";
             operation.DateOperation = DateTime.Now;
 
-            return operation;
+            _context.Add(operation);
+            _context.SaveChangesAsync();
+            return makeOperationDTO(expression, result.ToString());
         }
 
-        private double Calculate(double propA, string propOperation, double propB)
-        {
-            double Result;
-            switch (propOperation)
-            {
-                case "+":
-                    Result = propA + propB;
-                    break;
-                case "-":
-                    Result = propA - propB;
-                    break;
-                case "*":
-                    Result = propA * propB;
-                    break;
-                case "/":
-                    Result = propA / propB;
-                    break;
-                default:
-                    Result = propA + propB;
-                    break;
-            }
-            return Result;
+        private object Calculate(string expression){
+            DataTable dt = new();
+            var value = dt.Compute(expression,"");
+            return value;
         }
+
+        private OperationDTO makeOperationDTO(string expression, string result){
+            OperationDTO op = new OperationDTO();
+            op.expression = expression;
+            op.result = result;
+            return  op;
+        }
+
+
+
     }
 }

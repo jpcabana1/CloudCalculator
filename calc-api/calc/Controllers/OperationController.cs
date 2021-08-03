@@ -13,15 +13,13 @@ namespace calc.Controllers
     public class OperationController : ControllerBase
     {
         #region "Atributes"
-        private readonly OperationContext _context;
         private OperationService service;
         #endregion
 
         #region "Constructors"
         public OperationController(OperationContext context)
         {
-            _context = context;
-            service = new OperationService();
+            service = new OperationService(context);
         }
 
         #endregion
@@ -29,24 +27,20 @@ namespace calc.Controllers
         #region "Methods"
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Operation>>> GetOperations()
+        public ActionResult<IEnumerable<Operation>> GetOperations()
         {
-            return await _context.Operations.ToListAsync();
+            return Ok(service.getOperations());
         }
 
         // POST: api/Operation
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=212375
         [HttpPost]
-        public async Task<ActionResult<Operation>> PostOperation([FromHeader] double propA, [FromHeader] string propOperation, [FromHeader] double propB)
+        public ActionResult<OperationDTO> PostOperation([FromHeader] string propOperation)
         {
             try
             {
-                Operation operation = service.MakeOperation(propA, propOperation, propB);
-
-                _context.Operations.Add(operation);
-                await _context.SaveChangesAsync();
-
-                return CreatedAtAction(nameof(PostOperation), new { id = operation.Id }, operation);
+                OperationDTO response = service.CalculateExpression( propOperation);
+                return CreatedAtAction(nameof(PostOperation), response);
             }
             catch (Exception e)
             {

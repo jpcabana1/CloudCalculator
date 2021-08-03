@@ -1,31 +1,32 @@
-
+using Xunit;
 using calc.Models;
 using calc.Services;
-using Xunit;
+using FakeItEasy;
+using Microsoft.EntityFrameworkCore;
 
 namespace calc.Tests
 {
-
     public class OperationServiceTest
     {
-
         [Theory]
-        [InlineData(6, "+", 2)]
-        [InlineData(6, "-", 2)]
-        [InlineData(6, "*", 2)]
-        [InlineData(6, "/", 2)]
-        [InlineData(6, "error", 2)]
-        public void MakeOperation_ValidNumber_ReturnsOperation(double propA, string propOperation, double propB)
+        [InlineData("2.5000 + 0.5000")]
+        [InlineData("((20.5-0.5) * 5) / 2 ")]
+        public void MakeOperation_ValidNumber_ReturnsOperation(
+            string expression
+        )
         {
             //Arrange
-            OperationService service = new OperationService();
+             var options = new DbContextOptionsBuilder<OperationContext>()
+            .UseInMemoryDatabase(databaseName: "Operations")
+            .Options;
 
+            OperationService service = new(new OperationContext(options));
+        
             //Act
-            var op = service.MakeOperation(propA, propOperation, propB);
+            var op = service.CalculateExpression(expression);
 
             //Assert
-            Assert.IsType<Operation>(op);
+            Assert.IsType<OperationDTO> (op);
         }
-
     }
 }

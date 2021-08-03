@@ -1,0 +1,31 @@
+.MainPanel {
+  /* width: 30rem; */
+  display: grid;
+  place-items: center;
+  border-style: dashed;
+}
+
+.btnMainPanel {
+  width: 6rem;
+  font-size: 2rem;
+  margin: 1rem;
+}
+
+.btnMainPanelEquals {
+  width: 19rem;
+  font-size: 2rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+.resultLabel {
+  float: left;
+  font-size: 4.5rem;
+}
+
+.txtExpression {
+  margin-top: 1rem;
+  width: 35rem;
+  font-size: 2rem;
+  height: 5rem;
+}
