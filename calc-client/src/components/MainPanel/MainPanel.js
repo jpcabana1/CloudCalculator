@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
@@ -18,10 +18,38 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./MainPanel.css";
 
 function MainPanel() {
+  const [result, setResult] = useState(0);
+
   const buttonPress = (value) => {
     document.getElementById("txtExpress").value =
       document.getElementById("txtExpress").value + value;
-    console.log(value);
+  };
+
+  const clear = () => {
+    document.getElementById("txtExpress").value = "";
+    setResult(0);
+  };
+
+  const calculate = () => {
+    const expression = document.getElementById("txtExpress").value.toString();
+    if (expression === "") {
+      setResult(0);
+      return;
+    }
+
+    fetch("http://localhost:8080/api/Operation", {
+      method: "POST",
+      headers: {
+        Accept: "*/*",
+        "Content-Type": "application/json",
+        propOperation: expression,
+      },
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        setResult(response.result);
+      })
+      .catch((err) => setResult(0));
   };
 
   return (
@@ -39,28 +67,44 @@ function MainPanel() {
           </Col>
           <Col>
             <label className="resultLabel">
-              <b>0</b>
+              <b>{result}</b>
             </label>
           </Col>
         </Row>
         <Row>
           <Col sm>
-            <Button variant="outline-dark" className="btnMainPanel">
+            <Button
+              variant="outline-dark"
+              className="btnMainPanel"
+              onClick={() => buttonPress("(")}
+            >
               <b>(</b>
             </Button>
           </Col>
           <Col sm>
-            <Button variant="outline-dark" className="btnMainPanel">
+            <Button
+              variant="outline-dark"
+              className="btnMainPanel"
+              onClick={() => buttonPress(")")}
+            >
               <b>)</b>
             </Button>
           </Col>
           <Col sm>
-            <Button variant="outline-dark" className="btnMainPanel">
+            <Button
+              variant="outline-dark"
+              className="btnMainPanel"
+              onClick={clear}
+            >
               <b>C</b>
             </Button>
           </Col>
           <Col sm>
-            <Button variant="outline-dark" className="btnMainPanel">
+            <Button
+              variant="outline-dark"
+              className="btnMainPanel"
+              onClick={() => buttonPress(" / ")}
+            >
               <FontAwesomeIcon icon={faDivide} />
             </Button>
           </Col>
@@ -96,7 +140,11 @@ function MainPanel() {
           </Col>
 
           <Col sm>
-            <Button variant="outline-dark" className="btnMainPanel">
+            <Button
+              variant="outline-dark"
+              className="btnMainPanel"
+              onClick={() => buttonPress(" * ")}
+            >
               <FontAwesomeIcon icon={faTimes} />
             </Button>
           </Col>
@@ -130,7 +178,11 @@ function MainPanel() {
             </Button>
           </Col>
           <Col sm>
-            <Button variant="outline-dark" className="btnMainPanel">
+            <Button
+              variant="outline-dark"
+              className="btnMainPanel"
+              onClick={() => buttonPress(" - ")}
+            >
               <FontAwesomeIcon icon={faMinus} />
             </Button>
           </Col>
@@ -164,21 +216,41 @@ function MainPanel() {
             </Button>
           </Col>
           <Col sm>
-            <Button variant="outline-dark" className="btnMainPanel">
+            <Button
+              variant="outline-dark"
+              className="btnMainPanel"
+              onClick={() => buttonPress(" + ")}
+            >
               <FontAwesomeIcon icon={faPlus} />
             </Button>
           </Col>
         </Row>
         <Row>
-          <Col sm={3}></Col>
-
           <Col sm>
-            <Button variant="outline-dark" className="btnMainPanel">
+            <Button
+              variant="outline-dark"
+              className="btnMainPanel"
+              onClick={() => buttonPress(".")}
+            >
               <b>.</b>
             </Button>
           </Col>
+          <Col sm>
+            <Button
+              variant="outline-dark"
+              className="btnMainPanel"
+              onClick={() => buttonPress("0")}
+            >
+              <b>0</b>
+            </Button>
+          </Col>
+
           <Col xs lg="6">
-            <Button variant="outline-dark" className="btnMainPanelEquals">
+            <Button
+              variant="outline-dark"
+              className="btnMainPanelEquals"
+              onClick={calculate}
+            >
               <FontAwesomeIcon icon={faEquals} />
             </Button>
           </Col>
