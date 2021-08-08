@@ -1,6 +1,14 @@
 .Calculator {
-  border-style: solid;
-  width: 53rem;
+  border-style: dashed;
+  width: 100%;
   display: grid;
   place-items: center;
+  background-color: rgb(170, 32, 60);
+  color: white;
+}
+
+.panel {
+  display: grid;
+  place-items: center;
+  width: min-content;
 }

@@ -12,7 +12,9 @@ function Calculator() {
       <Container>
         <Row>
           <Col>
-            <MainPanel />
+            <div className="panel">
+              <MainPanel />
+            </div>
           </Col>
         </Row>
       </Container>
