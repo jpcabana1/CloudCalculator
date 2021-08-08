@@ -1,3 +1,7 @@
-.Calculator{
-    
+.Calculator {
+  border-style: solid;
+  width: 53rem;
+  display: grid;
+  place-items: center;
+  background-color: rgb(51, 48, 84);
 }
