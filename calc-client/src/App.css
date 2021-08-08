@@ -1,9 +1,8 @@
 .app {
   /* background-color: rgb(51, 48, 84); */
-  border-style: dashed;
-  border-color: rgb(0, 204, 255);
+
   display: grid;
   place-items: center;
   color: rgb(65, 50, 50);
-  width: 100%;
+  width: 150vh;
 }

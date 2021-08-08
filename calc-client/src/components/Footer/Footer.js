@@ -19,13 +19,18 @@ function Footer() {
           </div>
         </Col>
         <Col md="auto">
-          <FontAwesomeIcon icon={faReact} size="4x" color={color} />
+          <FontAwesomeIcon
+            className="react"
+            icon={faReact}
+            size="4x"
+            color={color}
+          />
         </Col>
         <Col md="auto">
           <Hexagon />
         </Col>
         <Col md="auto">
-          <FontAwesomeIcon icon={faDocker} size="4x" />
+          <FontAwesomeIcon className="docker" icon={faDocker} size="4x" />
         </Col>
       </Row>
     </footer>

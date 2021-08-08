@@ -7,3 +7,29 @@
   width: 30rem;
   font-size: 2rem;
 }
+
+.react {
+  animation: reactmove 10s infinite linear;
+}
+
+.docker {
+  animation: dockerop 1s infinite alternate-reverse;
+}
+
+@keyframes reactmove {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dockerop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
