@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
   faDivide,
   faPlus,
@@ -17,7 +18,7 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./MainPanel.css";
 
-const mainPanelButtonsStyle = "outline-info";
+const mainPanelButtonsStyle = "outline-light";
 
 function MainPanel() {
   const [result, setResult] = useState(0);
@@ -66,13 +67,13 @@ function MainPanel() {
   return (
     <Container>
       {/* Titulo */}
-      <Row>
+      {/* <Row>
         <Col>
           <div className="mainPanelTitle">
             <h1>Cloud Calculator</h1>
           </div>
         </Col>
-      </Row>
+      </Row> */}
       {/* Resultado */}
       <Row>
         <Col>

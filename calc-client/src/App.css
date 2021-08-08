@@ -1,0 +1,8 @@
+.app {
+  border-style: dashed;
+  width: fit-content;
+  display: grid;
+  place-items: center;
+  background-color: rgb(51, 48, 84);
+  color: white;
+}

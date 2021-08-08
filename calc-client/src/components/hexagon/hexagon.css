@@ -1,0 +1,33 @@
+/* display: grid;
+  place-items: center; */
+
+.hexagon {
+  position: relative;
+  width: 60px;
+  height: 34.64px;
+  background-color: #9b66cc;
+  margin: 17.32px 0;
+  display: grid;
+  place-items: center;
+  color: white;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 17.32px solid #9b66cc;
+}
+
+.hexagon:after {
+  top: 100%;
+  width: 0;
+  border-top: 17.32px solid #9b66cc;
+}
