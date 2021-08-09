@@ -1,0 +1,13 @@
+.hist {
+  background-color: rgb(175, 75, 18);
+  border-style: none;
+  border-color: rgb(252, 252, 252);
+  width: rem;
+  height: 40rem;
+  display: grid;
+  place-items: center;
+}
+
+.histButton {
+  float: right;
+}

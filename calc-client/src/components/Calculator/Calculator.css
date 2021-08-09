@@ -1,3 +1,14 @@
-.Calculator{
-    
+.Calculator {
+  display: grid;
+  place-items: center;
+  color: white;
+}
+
+.panel {
+  background-color: rgb(80, 32, 170);
+
+  border-color: rgb(252, 252, 252);
+  width: 30rem;
+  display: grid;
+  place-items: center;
 }
