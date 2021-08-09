@@ -13,14 +13,13 @@ import {
   faMinus,
   faEquals,
   faBackspace,
-  faHistory,
 } from "@fortawesome/free-solid-svg-icons";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./MainPanel.css";
+import History from "../History/History";
 
 const mainPanelButtonsStyleOutline = "outline-light";
-const mainPanelButtonsStyle = "outline-warning";
 
 function MainPanel() {
   const [result, setResult] = useState(0);
@@ -70,9 +69,7 @@ function MainPanel() {
     <Container>
       {/* Histórico */}
       <Row>
-        <Button variant={mainPanelButtonsStyle}>
-          <FontAwesomeIcon icon={faHistory} size="2x" />
-        </Button>
+        <History />
       </Row>
       {/* Resultado */}
       <Row>

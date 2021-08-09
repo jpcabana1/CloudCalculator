@@ -7,3 +7,7 @@
   display: grid;
   place-items: center;
 }
+
+.histButton {
+  float: right;
+}
