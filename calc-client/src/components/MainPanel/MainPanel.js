@@ -20,7 +20,7 @@ import "./MainPanel.css";
 import History from "../History/History";
 
 const mainPanelButtonsStyleOutline = "outline-light";
-const url = "http://localhost:8080/api/Operation";
+const url = "http://dotnetserver:8080/api/Operation";
 function MainPanel() {
   const [result, setResult] = useState(0);
   const [expression, setExpression] = useState("");

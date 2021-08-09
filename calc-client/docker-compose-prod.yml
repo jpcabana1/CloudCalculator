@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  reactapp:
+    container_name: calculator-react-app
+    build:
+      context: .
+      dockerfile: Dockerfile-prod
+    ports:
+      - "8081:80"
+    networks:
+      - calcnet
+    depends_on:
+      - dotnetserver
+  dotnetserver:
+    container_name: calculator-dotnet-core
+    image: "calc-api"
+    ports:
+      - "8080:80"
+    networks:
+      - calcnet
+    depends_on:
+      - db
+  db:
+    container_name: calculator-sqlserver-db
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      SA_PASSWORD: "C@lcP@55"
+      ACCEPT_EULA: "Y"
+    ports:
+      - 1402:1433
+    networks:
+      - calcnet
+networks:
+  calcnet:
+    driver: bridge

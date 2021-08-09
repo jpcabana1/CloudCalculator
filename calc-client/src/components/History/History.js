@@ -8,7 +8,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import "./History.css";
 
 const buttonsStyle = "outline-warning";
-const url = "http://localhost:8080/api/Operation";
+const url = "http://dotnetserver:8080/api/Operation";
 function History() {
   const [showHistory, setShowHistory] = useState(false);
   const [history, setHistory] = useState([]);

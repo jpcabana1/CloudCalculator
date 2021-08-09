@@ -18,3 +18,9 @@
 
 #### Json-Server
 - npx json-server --watch mockApi.json --port 3001
+
+
+#### Docker
+- docker build -f Dockerfile-prod -t sample:prod .
+- docker run -it -p 8081:80 --rm sample:prod
+- docker-compose -f docker-compose-prod.yml up -d --build
