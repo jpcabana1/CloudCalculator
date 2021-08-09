@@ -1,5 +1,7 @@
 .header {
-  font-size: 5rem;
+  width: 50rem;
+  font-size: 3rem;
   display: grid;
   place-items: center;
+  border-style: double;
 }

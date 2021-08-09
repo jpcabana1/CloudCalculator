@@ -1,10 +1,12 @@
 .footer {
   display: grid;
   place-items: center;
+  border-style: double;
+  width: 50rem;
 }
 
 .lblDesc {
-  width: 30rem;
+  /* width: 35rem; */
   font-size: 2rem;
 }
 

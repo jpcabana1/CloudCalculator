@@ -1,21 +1,35 @@
+import Col from "react-bootstrap/esm/Col";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
-import "./App.css";
+
 import Calculator from "./components/Calculator/Calculator";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
+
+import "./App.css";
+
 function App() {
   return (
     <div className="app">
-      <div className="panel">
-        <Container fluid>
-          <Row>
+      <Container fluid>
+        <Row>
+          <Col sm="auto">
             <Header />
-            <Calculator />
+          </Col>
+        </Row>
+        <Row>
+          <Col sm="auto">
+            <div className="comps">
+              <Calculator />
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
             <Footer />
-          </Row>
-        </Container>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

@@ -1,8 +1,13 @@
 .app {
   /* background-color: rgb(51, 48, 84); */
-
   display: grid;
   place-items: center;
-  color: rgb(65, 50, 50);
-  width: 150vh;
+  width: 52rem;
+  border-style: solid;
+  border-color: red;
+}
+
+.comps {
+  display: grid;
+  place-items: center;
 }

@@ -11,14 +11,14 @@ function Footer() {
   return (
     <footer className="footer">
       <Row className="justify-content-md-center">
-        <Col xs lg="6">
+        <Col sm="auto">
           <div>
             <label className="lblDesc">
               <b>Developed by jpcabana1</b>
             </label>
           </div>
         </Col>
-        <Col md="auto">
+        <Col sm="auto">
           <FontAwesomeIcon
             className="react"
             icon={faReact}
@@ -26,10 +26,10 @@ function Footer() {
             color={color}
           />
         </Col>
-        <Col md="auto">
+        <Col sm="auto">
           <Hexagon />
         </Col>
-        <Col md="auto">
+        <Col sm="auto">
           <FontAwesomeIcon className="docker" icon={faDocker} size="4x" />
         </Col>
       </Row>
