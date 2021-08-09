@@ -7,8 +7,6 @@ services:
       dockerfile: Dockerfile-prod
     ports:
       - "8081:80"
-    networks:
-      - calcnet
     depends_on:
       - dotnetserver
   dotnetserver:
@@ -16,8 +14,6 @@ services:
     image: "calc-api"
     ports:
       - "8080:80"
-    networks:
-      - calcnet
     depends_on:
       - db
   db:
@@ -28,8 +24,3 @@ services:
       ACCEPT_EULA: "Y"
     ports:
       - 1402:1433
-    networks:
-      - calcnet
-networks:
-  calcnet:
-    driver: bridge
