@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
   faDivide,
   faPlus,
@@ -16,9 +17,10 @@ import {
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./MainPanel.css";
+import History from "../History/History";
 
-const mainPanelButtonsStyle = "outline-info";
-
+const mainPanelButtonsStyleOutline = "outline-light";
+const url = "http://localhost:8080/api/Operation";
 function MainPanel() {
   const [result, setResult] = useState(0);
   const [expression, setExpression] = useState("");
@@ -48,7 +50,7 @@ function MainPanel() {
       setResult(0);
       return;
     }
-    fetch("http://localhost:8080/api/Operation", {
+    fetch(url, {
       method: "POST",
       headers: {
         Accept: "*/*",
@@ -65,13 +67,9 @@ function MainPanel() {
 
   return (
     <Container>
-      {/* Titulo */}
+      {/* Histórico */}
       <Row>
-        <Col>
-          <div className="mainPanelTitle">
-            <h1>Cloud Calculator</h1>
-          </div>
-        </Col>
+        <History />
       </Row>
       {/* Resultado */}
       <Row>
@@ -96,28 +94,28 @@ function MainPanel() {
         <div className="MainPanel">
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={() => buttonPress("(")}
           >
             (
           </Button>
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={() => buttonPress(")")}
           >
             )
           </Button>
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={clear}
           >
             <b>C</b>
           </Button>
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={remove}
           >
             <FontAwesomeIcon icon={faBackspace} />
@@ -126,28 +124,28 @@ function MainPanel() {
 
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={() => buttonPress("7")}
           >
             7
           </Button>
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={() => buttonPress("8")}
           >
             8
           </Button>
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={() => buttonPress("9")}
           >
             9
           </Button>
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={() => buttonPress(" + ")}
           >
             <FontAwesomeIcon icon={faPlus} />
@@ -156,28 +154,28 @@ function MainPanel() {
 
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={() => buttonPress("4")}
           >
             4
           </Button>
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={() => buttonPress("5")}
           >
             5
           </Button>
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={() => buttonPress("6")}
           >
             6
           </Button>
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={() => buttonPress(" - ")}
           >
             <FontAwesomeIcon icon={faMinus} />
@@ -185,28 +183,28 @@ function MainPanel() {
           <br />
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={() => buttonPress("1")}
           >
             1
           </Button>
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={() => buttonPress("2")}
           >
             2
           </Button>
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={() => buttonPress("3")}
           >
             3
           </Button>
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={() => buttonPress(" * ")}
           >
             <FontAwesomeIcon icon={faTimes} />
@@ -214,28 +212,28 @@ function MainPanel() {
           <br />
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={() => buttonPress(".")}
           >
             .
           </Button>
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={() => buttonPress("0")}
           >
             0
           </Button>
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={calculate}
           >
             <FontAwesomeIcon icon={faEquals} />
           </Button>
           <Button
             className="btnNumber"
-            variant={mainPanelButtonsStyle}
+            variant={mainPanelButtonsStyleOutline}
             onClick={() => buttonPress(" / ")}
           >
             <FontAwesomeIcon icon={faDivide} />
