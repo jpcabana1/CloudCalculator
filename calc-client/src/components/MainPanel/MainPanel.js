@@ -20,7 +20,7 @@ import "./MainPanel.css";
 import History from "../History/History";
 
 const mainPanelButtonsStyleOutline = "outline-light";
-
+const url = "http://localhost:8080/api/Operation";
 function MainPanel() {
   const [result, setResult] = useState(0);
   const [expression, setExpression] = useState("");
@@ -50,7 +50,7 @@ function MainPanel() {
       setResult(0);
       return;
     }
-    fetch("http://localhost:8080/api/Operation", {
+    fetch(url, {
       method: "POST",
       headers: {
         Accept: "*/*",

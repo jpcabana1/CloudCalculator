@@ -1,6 +1,6 @@
 import { faHistory } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import Offcanvas from "react-bootstrap/Offcanvas";
@@ -8,12 +8,29 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import "./History.css";
 
 const buttonsStyle = "outline-warning";
-
+const url = "http://localhost:8080/api/Operation";
 function History() {
   const [showHistory, setShowHistory] = useState(false);
+  const [history, setHistory] = useState([]);
+
+  const update = () => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((response) => {
+        setHistory(response.reverse());
+      });
+  };
 
   const handleClose = () => setShowHistory(false);
-  const handleShow = () => setShowHistory(true);
+
+  const handleShow = () => {
+    setShowHistory(true);
+    update();
+  };
+
+  useEffect(() => {
+    update();
+  });
 
   return (
     <div className="histButton">
@@ -33,18 +50,14 @@ function History() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>{"20 + 5 = 25"}</td>
-                <td>{"2021-08-08T18:39:59.2882008"}</td>
-              </tr>
-              <tr>
-                <td>{"9456 - 400 - 56 - 9000 = 0"}</td>
-                <td>{"2021-08-08T18:39:59.2882008"}</td>
-              </tr>
-              <tr>
-                <td>{"(30 * 10) + 200 = 500"}</td>
-                <td>{"2021-08-08T18:39:59.2882008"}</td>
-              </tr>
+              {history.map((exp) => {
+                return (
+                  <tr key={exp.id}>
+                    <td>{exp.operationData}</td>
+                    <td>{exp.dateOperation}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </Table>
         </Offcanvas.Body>
