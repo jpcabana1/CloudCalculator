@@ -14,7 +14,6 @@ function History() {
   const [history, setHistory] = useState([]);
 
   const update = () => {
-    console.log(url);
     fetch(url)
       .then((res) => res.json())
       .then((response) => {
