@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile-prod
     ports:
-      - "8081:80"
+      - "8082:80"
     depends_on:
       - dotnetserver
   dotnetserver:

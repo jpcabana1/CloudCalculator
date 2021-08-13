@@ -8,12 +8,13 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import "./History.css";
 
 const buttonsStyle = "outline-warning";
-const url = "http://localhost:8080/api/Operation";
+const url = "http://" + window.location.hostname + ":8080/api/Operation";
 function History() {
   const [showHistory, setShowHistory] = useState(false);
   const [history, setHistory] = useState([]);
 
   const update = () => {
+    console.log(url);
     fetch(url)
       .then((res) => res.json())
       .then((response) => {
@@ -27,10 +28,6 @@ function History() {
     setShowHistory(true);
     update();
   };
-
-  useEffect(() => {
-    update();
-  });
 
   return (
     <div className="histButton">
