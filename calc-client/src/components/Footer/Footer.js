@@ -13,7 +13,9 @@ function Footer() {
       <Row className="justify-content-md-center">
         <Col sm="auto">
           <div className="lblDesc">
-            <label>Developed by </label>
+            <label>
+              <b>Developed by</b>{" "}
+            </label>
             <a href={link}>
               <b> jpcabana1</b>
             </a>
@@ -23,7 +25,7 @@ function Footer() {
           <FontAwesomeIcon
             className="react"
             icon={faReact}
-            size="4x"
+            size="3x"
             color={color}
           />
         </Col>
@@ -31,7 +33,7 @@ function Footer() {
           <Hexagon />
         </Col>
         <Col sm="auto">
-          <FontAwesomeIcon className="docker" icon={faDocker} size="4x" />
+          <FontAwesomeIcon className="docker" icon={faDocker} size="3x" />
         </Col>
       </Row>
     </footer>

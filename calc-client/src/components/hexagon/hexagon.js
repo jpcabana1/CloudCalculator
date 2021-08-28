@@ -5,7 +5,7 @@ function Hexagon() {
   return (
     <div className="hexagon">
       <h3>
-        <b>C#</b>
+        <b> {" C# "} </b>
       </h3>
     </div>
   );
