@@ -2,12 +2,13 @@
   display: grid;
   place-items: center;
   border-style: double;
-  width: 50rem;
+  width: 30rem;
 }
 
 .lblDesc {
   /* width: 35rem; */
-  font-size: 2rem;
+  /* font-size: 1.5rem; */
+  display: block;
 }
 
 .react {

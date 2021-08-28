@@ -2,9 +2,11 @@
   /* background-color: rgb(51, 48, 84); */
   display: grid;
   place-items: center;
-  width: 52rem;
-  border-style: solid;
-  border-color: red;
+  width: 32rem;
+}
+
+* {
+  margin: 0;
 }
 
 .comps {
