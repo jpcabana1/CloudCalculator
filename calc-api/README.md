@@ -11,6 +11,7 @@
 - dotnet add package Microsoft.EntityFrameworkCore.Tools
 - dotnet tool install --global dotnet-aspnet-codegenerator
 - dotnet tool update -g Dotnet-aspnet-codegenerator
+- dotnet tool install --global dotnet-ef
 - dotnet ef migrations add DatabaseOperations
 - dotnet ef database update
 - dotnet aspnet-codegenerator controller -name OperationController -async -api -m Operation -dc OperationContext -outDir Controllers
